@@ -1,0 +1,2 @@
+# Production WSGI server (pure Python; Linux/macOS).
+gunicorn>=22.0,<24

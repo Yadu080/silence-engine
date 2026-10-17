@@ -1,0 +1,11 @@
+# OPTIONAL - only for the machine-learning triage benchmark (python backend/manage.py evaluate-ml, notebook Part C,
+# the ML section of the Evaluation page). The core engine, API, dashboard and tests need none of this and skip the
+# ML tests cleanly when it is absent. Install into the same environment that runs the backend.
+#
+# Tested with scikit-learn 1.7.2, numpy 2.3.5, scipy 1.16.3 on macOS arm64 / CPython 3.13.9.
+#
+# IBM Z / LinuxONE (s390x): do NOT pip install these. PyPI has no s390x wheels for numpy or scikit-learn, so pip would
+# try to compile them from source. Use the Python of the LinuxONE ML container image
+# (registry.linuxone.cloud.marist.edu/l1cc/jupyterlab-image-s390x), which already ships them.
+scikit-learn>=1.3,<2
+numpy>=1.24

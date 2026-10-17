@@ -1,0 +1,25 @@
+# systemd unit TEMPLATE (optional; needs sudo to install). Replace __USER__ and __APP_DIR__:
+#   sed -e "s|__USER__|$(id -un)|g" -e "s|__APP_DIR__|$HOME/silence-engine-1.0.0|g" \
+#       scripts/linuxone/silence-engine.service | sudo tee /etc/systemd/system/silence-engine.service
+#   sudo systemctl daemon-reload && sudo systemctl enable --now silence-engine
+[Unit]
+Description=SILENCE ENGINE backend (Flask + gunicorn)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__APP_DIR__/backend
+ExecStart=__APP_DIR__/.venv/bin/gunicorn --config __APP_DIR__/scripts/linuxone/gunicorn.conf.py wsgi:app
+Restart=on-failure
+RestartSec=5
+# Hardening: the service can only write to its data directory.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=__APP_DIR__/data
+
+[Install]
+WantedBy=multi-user.target

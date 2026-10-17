@@ -1,0 +1,3 @@
+# Runtime dependencies (all pure Python except MarkupSafe, which builds from source on s390x
+# and falls back to pure Python automatically if no C compiler is available).
+Flask>=3.0.3,<3.2

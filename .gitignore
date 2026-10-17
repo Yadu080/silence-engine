@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+frontend/node_modules/
+
+# Runtime data (regenerate with: python backend/manage.py init-demo)
+data/*.sqlite3*
+data/.write.lock
+data/.init.lock
+data/synthetic/
+
+# Secrets and local config
+.env
+
+# Release artefacts
+release/
+*.tar.gz
+
+.DS_Store
+
+# Local-only extras
+submission/
+*.zip
+*.pem
